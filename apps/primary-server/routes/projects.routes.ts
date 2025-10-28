@@ -1,12 +1,12 @@
 import { prismaClient } from "db/client";
 import { Router } from "express";
+import { authMiddleware } from "../middleware";
 
 const route = Router()
 
-route.post("/projects", async (req, res) => {
+route.post("/projects", authMiddleware, async (req, res) => {
     const { prompt } = req.body;
-    //@ts-ignore
-    const { userId } = req.userId;
+    const userId = req.userId!;
     //logic to get name
     const description = prompt.split("\n")[0]
     const project = await prismaClient.project.create({
@@ -18,13 +18,14 @@ route.post("/projects", async (req, res) => {
     res.json({ projectId: project.id })
 })
 
-route.get("/projects", async (req, res) => {
-    //@ts-ignore
-    const userId = req.userId
-    const projects = await prismaClient.project.findUnique({
+route.get("/projects", authMiddleware, async (req, res) => {
+    const userId = req.userId;
+    const projects = await prismaClient.project.findFirst({
         where: {
             userId
         }
     })
     return (projects)
 })
+
+export default route;

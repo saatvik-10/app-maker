@@ -1,13 +1,12 @@
-import { prismaClient } from "db/client"
-import { redisClient } from "redis/client"
 import express from 'express'
 import cors from 'cors'
+import routes from './routes/projects.routes'
 
 const app = express()
 
-app.use(express.json)
+app.use(express.json())
 app.use(cors())
 
-
+app.use(routes)
 
 app.listen(8080)

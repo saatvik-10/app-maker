@@ -32,13 +32,13 @@ export function Appbar() {
           <SignedOut>
             <SignInButton>
               <Button className='bg-white text-red-800 font-bold hover:bg-red-100 cursor-pointer px-4 py-2 rounded-xl'>
-                Sign In
+                SIGN IN
               </Button>
             </SignInButton>
 
             <SignUpButton>
               <Button className='bg-white text-red-800 font-bold hover:bg-red-100 cursor-pointer px-4 py-2 rounded-xl'>
-                Sign Up
+                SIGN UP
               </Button>
             </SignUpButton>
           </SignedOut>

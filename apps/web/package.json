@@ -11,6 +11,7 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.34.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@repo/ui": "*",
     "@tailwindcss/postcss": "^4.1.16",

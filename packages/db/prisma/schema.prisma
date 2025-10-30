@@ -31,10 +31,16 @@ model Project {
 }
 
 model Prompt {
-  id        String   @id @default(cuid())
+  id        String     @id @default(cuid())
   content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   projectId String
-  project   Project  @relation(fields: [projectId], references: [id])
+  project   Project    @relation(fields: [projectId], references: [id])
+  type      PromptType
+}
+
+enum PromptType {
+  USER
+  SYSTEM
 }
